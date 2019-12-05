@@ -1,0 +1,70 @@
+@import '~@/assets/styles/variables.scss';
+@import '~@/assets/styles/mixins.scss';
+
+@mixin search-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  img {
+    width: 0.28rem;
+  }
+
+  input {
+    flex: 1;
+    font-size: 0.28rem;
+    margin-left: 0.1rem;
+  }
+}
+
+@mixin orders-block {
+  @include flex-container;
+
+  position: fixed;
+  bottom: 0rem;
+  width: 100%;
+
+  div {
+    @include flex-container;
+    justify-content: center;
+    height: 0.98rem;
+  }
+}
+
+@mixin modal-item {
+  width: 5.6rem;
+
+  border-radius: 0.08rem;
+  background-color: #ffffff;
+
+  p {
+    text-align: center;
+    font-size: 0.36rem;
+
+    padding-top: 0.76rem;
+    padding-bottom: 0.64rem;
+  }
+
+  div {
+    @include flex-container;
+    border-top: 1px solid $border-color;
+
+    span {
+      flex-basis: 50%;
+      display: inline-block;
+      height: 1rem;
+
+      font-size: 0.36rem;
+      text-align: center;
+      line-height: 1rem;
+    }
+
+    span:nth-of-type(2) {
+      color: $secondary-color;
+    }
+
+    span + span {
+      border-left: 1px solid $border-color;
+    }
+  }
+}

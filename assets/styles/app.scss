@@ -1,0 +1,320 @@
+/**
+global styles for app
+ */
+@import "variables";
+@import "mixins";
+@import "quill.bubble.min";
+@import "quill.core.min";
+@import "quill.snow.min";
+@import "vue2-animate/dist/vue2-animate.min.css";
+@import "./font.css";
+html,
+body,
+#__nuxt,
+#__layout{
+  height: 100%;
+}
+
+body {
+  font-size: 0.28rem !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0px;
+  background: #FFFFFF;
+  color: $primary-text-color;
+  font-family: $font-family;
+  // font-family: Avenir !important;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+strong,b{font-weight: bold !important;}
+
+//重写富文本样式
+.ql-editor{
+  padding: 0 !important;
+}
+
+/*取消H5浏览器聚焦样式*/
+img,
+button,
+textarea,
+input,
+a {
+  vertical-align: middle !important;
+  outline: medium !important;
+  border: none;
+  text-decoration: none;
+  -webkit-appearance:none;
+  resize: none;
+}
+
+.router-fade-enter-active,
+.router-fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.router-fade-enter,
+.router-fade-leave-active {
+  opacity: 0;
+}
+//调整cube-ui组件样式
+.cube-switch .cube-switch-input:checked+.cube-switch-ui{
+  border-color: $primary-color!important;
+  background-color: $primary-color!important;
+}
+.cube-picker-confirm{
+  color: $primary-color!important;
+}
+.cube-toast-icon{
+  line-height: 1 !important;
+}
+.cube-toast-tip{
+  max-width: 18em !important;
+}
+//输入框占位字体颜色
+::-webkit-input-placeholder {color:$placeholder-color;}
+:-moz-placeholder {color:$placeholder-color;}
+::-moz-placeholder {color:$placeholder-color;}
+:-ms-input-placeholder {color:$placeholder-color;}
+
+//动态图片占位样式
+.img-placeholder{@include img-placeholder}
+
+//全局即用样式
+.fl{float: left;}
+.fr{float: right;}
+.clear{@include clear}
+
+.line-limit{@include line-limit-n(1)}
+.line-limit-2{@include line-limit-n(2)}
+
+.btn-primary{ @include btn-primary }
+.btn-secondary{ @include btn-secondary }
+.btn-disable{ @include btn-disable }
+
+.icon-select {@include icon-select}
+
+.container-gray{
+  height: 100vh;
+  overflow: auto;
+  background: $background-color;
+}
+
+//协议样式
+.agreement-container{
+  padding: 0.32rem 0.38rem;
+  color: #333333;
+  font-size: 0.26rem;
+  //line-height: 0.48rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  // a{
+  //   color: blue;
+  // }
+}
+
+//订单列表样式
+.order-list {
+  padding-top: 0.2rem;
+  .li {
+    width: 100%;
+    padding: 0 0.35rem;
+    background: #FFFFFF;
+    &+.li{
+      margin-top: 0.2rem;
+    }
+
+    .til {
+      height: 0.75rem;
+      color: #73C9B3;
+      font-size: 0.26rem;
+      margin-top: 0.2rem;
+      @include flex-container;
+      // border-bottom: 1px solid rgba(229, 229, 229, 1);
+
+      &:before {
+        content: '';
+        display: block;
+        width: 0.32rem;
+        height: 0.32rem;
+        background-size: contain;
+      }
+    }
+
+    .bottom{
+      border-top: 1px solid rgba(229,229,229,1);
+      padding: 0.2rem 0;
+      display: flex;
+      justify-content: flex-end;
+      .bt{
+        @include button(auto,0.54rem, 0.28rem,none,rgba(141,153,161,1),rgba(141,153,161,1));
+        //line-height: 0.54rem;
+        margin: 0 !important;
+        margin-left: 0.1rem !important;
+        font-size: 0.28rem !important;
+        padding: 0 0.3rem;
+        min-width: 1.36rem;
+        &.primary{
+          @include button(auto,0.54rem, 0.28rem,$primary-color,$primary-color,#fff);
+        }
+        &.secondary{
+          @include button(auto,0.54rem, 0.28rem,$secondary-color,$secondary-color,#fff);
+        }
+      }
+    }
+  }
+}
+
+//订单详情样式
+.order-detail {
+  display: flex;
+  flex-direction: column;
+  .content{
+    flex: 1;
+    overflow: auto;
+    .addr {
+      padding: 0.3rem 0.34rem 0.4rem;
+      font-size: 0.32rem;
+      background: #FFFFFF url("~assets/images/current/ic_orders_line.png") bottom no-repeat ;
+      background-size: 100% auto;
+      .into{
+        @include icon-box-right;
+      }
+      .add{
+        padding: 0.2rem 0;
+        text-align: center;
+        font-size: 0.32rem;
+        color:rgba(141,153,161,1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .ic{
+          width: 0.38rem;
+          height: 0.38rem;
+          margin-right: 0.2rem;
+        }
+      }
+    }
+
+    .goods {
+      background: #FFFFFF;
+      margin-top: 0.2rem;
+      padding: 0 0.4rem;
+
+      .price {
+        border-top: 1px solid rgba(229, 229, 229, 1);
+        padding: 0.22rem 0;
+
+        .li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: rgba(141, 153, 161, 1);
+
+          & + .li {
+            margin-top: 0.15rem;
+          }
+
+          &.total {
+            .attr {
+              font-weight: 500;
+              color: #000;
+              font-size: 0.32rem;
+            }
+
+            .val {
+              font-weight: 500;
+              color: rgba(252, 171, 50, 1);
+              font-size: 0.36rem;
+            }
+          }
+        }
+      }
+    }
+
+    .info {
+      margin-top: 0.2rem;
+      background: #FFFFFF;
+      padding: 0.4rem 0.48rem 0.45rem;
+
+      .til {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .sp {
+          font-weight: 500;
+        }
+
+        .bt {
+          color: rgba(141, 153, 161, 1);
+          line-height: 0.42rem;
+          width: 1.66rem;
+          text-align: center;
+          border: 1px solid rgba(141, 153, 161, 1);
+        }
+      }
+
+      .main {
+        margin-top: 0.22rem;
+        color: rgba(84, 101, 112, 1);
+        font-size: 0.26rem;
+        line-height: 0.4rem;
+      }
+    }
+
+    .guarantee {
+      margin-top: 0.2rem;
+      background: #FFFFFF;
+      padding: 0.4rem 0.48rem;
+
+      .til {
+        .ic {
+          width: 0.4rem;
+          margin-right: 0.2rem;
+          vertical-align: middle !important;
+        }
+
+        .tex {
+          font-weight: 500;
+          font-size: 0.32rem;
+        }
+      }
+
+      .main {
+        margin-top: 0.2rem;
+        color: rgba(84, 101, 112, 1);
+        font-size: 0.26rem;
+        line-height: 0.4rem;
+      }
+    }
+  }
+  .bottom{
+    display: flex;
+    background: #FFFFFF;
+    box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5);
+    z-index: 1;
+    .bt{
+      flex: 1;
+      border: none;
+      font-weight: normal;
+      height: 1.1rem;
+    }
+  }
+}
+
+//占位图
+.placeholder-img{
+  background: url("~assets/images/current/ic_placeholder.png") no-repeat center;
+  background-size: contain;
+  width:4.5rem;
+  height: 4.5rem;
+  margin: 1rem auto;
+}

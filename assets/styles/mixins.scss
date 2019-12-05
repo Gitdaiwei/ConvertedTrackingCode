@@ -1,0 +1,155 @@
+@import './variables.scss';
+
+// 统一字体
+@mixin font(
+  $font-size: 0.28rem,
+  $font-weight: normal,
+  $color: $primary-text-color,
+  $line-height: auto
+) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  line-height: $line-height;
+}
+
+
+// Flex 布局
+@mixin flex-container(
+  $flex-direction: row,
+  $align-items: center,
+  $justify-content: space-between
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+
+//默认定位布局
+@mixin pos-box($position:absolute,$top:auto,$right:auto,$bottom:auto,$left:auto){
+  position: $position;
+  top: $top;
+  bottom: $bottom;
+  right: $right;
+  left: $left;
+}
+
+//清除浮动
+@mixin clear{
+  clear: both;
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+//限制行数为n行
+@mixin line-limit-n($-webkit-line-clamp : 1){
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $-webkit-line-clamp;
+  -webkit-box-orient: vertical;
+}
+
+// 默认按钮
+@mixin button($width:2rem,$height:auto,$border-radius:0.05rem,$background: $primary-color,$border-color: $primary-color, $color:#FFFFFF) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: $width;
+  height: $height;
+  border-radius: $border-radius;
+  background: $background;
+  border: 1px solid $border-color;
+  color: $color;
+  font-size: 0.32rem;
+  font-weight: 500;
+}
+
+// 提交按钮（主色）
+@mixin btn-primary(){ @include button(100%,1rem,0rem,$primary-color,none,#fff);box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5); }
+
+// 提交按钮（次色）
+@mixin btn-secondary(){ @include button(100%,1rem,0rem,$secondary-color,none,#fff);box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5); }
+
+// 提交按钮（无效）
+@mixin btn-disable(){ @include button(100%,1rem,0rem,none,$button-disabled-color,$button-disabled-color) }
+
+// 尾部添加小icon
+@mixin icon-box(){
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:after{
+    content: '';
+    display: block;
+    width:0.24rem ;
+    height: 0.24rem;
+    margin-left: 0.05rem;
+    background-size: contain !important;
+  }
+}
+
+// 尾部添加向右icon
+@mixin icon-box-right() {
+  @include icon-box;
+  &:after{
+    background: url(~assets/images/arrow/ic_personal_arrow.png) no-repeat center;
+  }
+}
+
+// 尾部添加向上icon
+@mixin icon-box-up() {
+  @include icon-box;
+  &:after{
+    background: url(~assets/images/arrow/ic_start_arrow_1.png) no-repeat center;
+  }
+}
+
+// 尾部添加向下icon
+@mixin icon-box-down() {
+  @include icon-box;
+  &:after{ background: url(~assets/images/arrow/ic_start_arrow_1.png) no-repeat center; }
+}
+
+// 尾部添加向下icon2
+@mixin icon-box-down-2() {
+  @include icon-box;
+  &:after{
+    width: 0.15rem;
+    height: 0.15rem;
+    background: url(~assets/images/arrow/ic_post_choose.png) no-repeat center;
+  }
+}
+
+// 选择状态的icon
+@mixin icon-select(){
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 0.4rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 100%;
+  background-size: 100% 100% !important;
+  background: #ffffff url(~assets/images/ic_personal_goods_unelected.png);
+  &.on{background: #ffffff url(~assets/images/ic_personal_select.png);}
+}
+
+// 占位图
+@mixin img-placeholder(){
+  background: #f5f5f5;
+  //background: url(~assets/images/tea/pic_home_logo_bg.png) no-repeat center;
+  //background-size:40% auto;
+  //object-fit: cover;
+}
+
+
+
+
+
+
