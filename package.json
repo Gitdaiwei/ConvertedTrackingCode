@@ -26,7 +26,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "cookie-parser": "^1.4.3",
     "cube-ui": "^1.10.10",
     "express": "latest",
